@@ -45,6 +45,46 @@ module.exports = {
       return message.reply(`✅ Prefix changed successfully!\nNew Prefix: ${newPrefix}`);
     }
 
+    const prefixFile = path.join(__dirname, "prefixData.json");
+
+    if (!fs.existsSync(prefixFile)) {
+      fs.writeFileSync(prefixFile, JSON.stringify({}, null, 2));
+    }
+
+    const getPrefix = (threadID) => {
+      const data = JSON.parse(fs.readFileSync(prefixFile));
+      return data[threadID] || global.GoatBot.config.prefix;
+    };
+
+    const setPrefix = (threadID, newPrefix) => {
+      const data = JSON.parse(fs.readFileSync(prefixFile));
+      data[threadID] = newPrefix;
+      fs.writeFileSync(prefixFile, JSON.stringify(data, null, 2));
+    };
+
+    // ================= SETPREFIX =================
+    if (args && args[0] === "set") {
+      const newPrefix = args[1];
+
+      if (!newPrefix) {
+        return message.reply("❌ | Example: prefix set !");
+      }
+
+      setPrefix(event.threadID, newPrefix);
+      global.GoatBot.config.prefix = newPrefix;
+
+      return message.reply(`✅ Prefix changed successfully!\nNew Prefix: ${newPrefix}`);
+    }
+
+    const botPrefix = global.GoatBot.config.prefix || "!";
+    const groupPrefix = getPrefix(event.threadID);
+
+    // 🔥 FIX: শুধু "." দিলে simple reply
+    if (event.body && event.body.trim() === botPrefix) {
+      return message.reply("🎀\nιт'ѕ ʝυѕт му ρяєƒιχ");
+    }
+
+    // ================= FULL PREFIX INFO =================
     const ping = Date.now() - event.timestamp;
     const day = new Date().toLocaleString("en-US", { weekday: "long" });
 
@@ -62,7 +102,6 @@ module.exports = {
         "𝐋𝐨𝐚𝐝𝐢𝐧𝐠 𝐏𝐫𝐞𝐟𝐢𝐱...\n▰▰▰▰▰▰▰▰▰▱ 90%",
         "𝐋𝐨𝐚𝐝𝐢𝐧𝐠 𝐏𝐫𝐞𝐟𝐢𝐱...\n▰▰▰▰▰▰▰▰▰▰ 100%"
       ],
-
       [
         "𝙇𝙤𝙖𝙙𝙞𝙣𝙜 𝙋𝙧𝙚𝙛𝙞𝙭...\n[■□□□□□□□□□] 10%",
         "𝙇𝙤𝙖𝙙𝙞𝙣𝙜 𝙋𝙧𝙚𝙛𝙞𝙭 ...\n[■■■□□□□□□□] 30%",
@@ -71,7 +110,6 @@ module.exports = {
         "𝙇𝙤𝙖𝙙𝙞𝙣𝙜 𝙋𝙧𝙚𝙛𝙞𝙭...\n[■■■■■■■■■□] 90%",
         "𝙇𝙤𝙖𝙙𝙞𝙣𝙜 𝙋𝙧𝙚𝙛𝙞𝙭...\n[■■■■■■■■■■] 100%"
       ],
-
       [
         "𝙻𝚘𝚊𝚍𝚒𝚗𝚐 𝙿𝚛𝚎𝚏𝚒𝚡...\n◉□□□□□□□□□ 10%",
         "𝙻𝚘𝚊𝚍𝚒𝚗𝚐 𝙿𝚛𝚎𝚏𝚒𝚡...\n◉◉◉□□□□□□□ 30%",
