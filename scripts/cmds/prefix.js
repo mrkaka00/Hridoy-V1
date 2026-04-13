@@ -110,7 +110,31 @@ module.exports = {
 💠 Bot Prefix: ${BOTPREFIX}
 💬 Group Prefix: ${GROUPPREFIX}
 🤖 Bot Name: ${BOTNAME}
-🌟╚═༶• 𝗘𝗻𝗱 𝗢𝗳 𝗦𝘁𝗮𝘁𝘂𝘀 •༶═╝🌟`
+🌟╚═༶• 𝗘𝗻𝗱 𝗢𝗳 𝗦𝘁𝗮𝘁𝘂𝘀 •༶═╝🌟`,
+
+`╭━•✧𝗣𝗥𝗘𝗙𝗜𝗫 𝗦𝗧𝗔𝗧𝗨𝗦✧•━╮
+│ ⏱ Ping: ${ping}ms
+│ 📆 Day: ${day}
+│ 🔹 Bot Prefix: ${BOTPREFIX}
+│ 🔹 Group Prefix: ${GROUPPREFIX}
+│ 🤖 Bot: ${BOTNAME}
+╰━━━━━━━━━━━━━━━━╯`,
+
+`┏━༺ 𝗣𝗥𝗘𝗙𝗜𝗫 𝗜𝗡𝗙𝗢 ༻━┓
+┃ 🕒 Ping: ${ping}ms
+┃ 📅 Day: ${day}
+┃ 💠 Bot Prefix: ${BOTPREFIX}
+┃ 💬 Group Prefix: ${GROUPPREFIX}
+┃🤖 Bot Name: ${BOTNAME}
+┗━━━━━━━━━━━━━━━━┛`,
+
+`▸▸▸ 𝗣𝗥𝗘𝗙𝗜𝗫 𝗦𝗧𝗔𝗧𝗨𝗦 ◂◂◂
+Ping: ${ping}ms
+Day: ${day}
+Bot Prefix: ${BOTPREFIX}
+Group Prefix: ${GROUPPREFIX}
+Bot Name: ${BOTNAME}`
+      
     ];
 
     const randomLoadingSet = loadingSets[Math.floor(Math.random() * loadingSets.length)];
