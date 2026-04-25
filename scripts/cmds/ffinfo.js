@@ -20,7 +20,7 @@ module.exports = {
       const uid = args[0];
       if (!uid) {
         return api.sendMessage(
-          "⚠️ Please provide a Free Fire UID\n📌 Example: ffinfo 3060644273",
+          "⚠️ Please provide a Free Fire UID\n📌 Example: ffinfo 5190022846 ",
           event.threadID,
           event.messageID
         );
@@ -109,7 +109,7 @@ ${social.signature
           : "N/A"
       }
 
-✨ Powered by 𝐌ᴏʜᴀᴍᴍᴀᴅ Aᴋᴀsʜ
+✨ Powered by HR ID OY 
 `;
 
       await api.editMessage(msg, wait.messageID);
